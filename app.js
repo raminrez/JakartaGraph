@@ -5,9 +5,12 @@ const mongoose = require("mongoose");
 
 const graphQlSchema = require("./geaphql/schema/index");
 const graphQlResolvers = require("./geaphql/resolvers/index");
+const isAuth = require("./middleware/is-auth");
 
 const app = express();
 app.use(bodyParser.json());
+
+app.use(isAuth);
 
 app.use(
   "/graphql",
